@@ -32,6 +32,9 @@ services:
     image: f1tenth_gym_ros
     build: ./
     volumes: 
+      - ./sim_ws/config:/root/sim_ws/config
+      - ./sim_ws/launch:/root/sim_ws/launch
+      - ./sim_ws/maps:/root/sim_ws/maps
       - ./sim_ws/src:/root/sim_ws/src
       - ./lab1_ws/src:/root/lab1_ws/src
       - ./lab2_ws/src:/root/lab2_ws/src

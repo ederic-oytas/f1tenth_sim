@@ -30,7 +30,11 @@ particle_filter:
     # sensor model variant, variant 2 good for rmgpu, 3 doesn't work for rmgpu
     rangelib_variant: 2
 
+
     # frames
     map_frame: /map
     car_frame: /ego_racecar/baselink
     laser_frame: /ego_racecar/laser
+    
+    # publish transformation (false in simulator)
+    publish_tf: false

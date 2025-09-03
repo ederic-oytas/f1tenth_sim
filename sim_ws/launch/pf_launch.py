@@ -15,5 +15,6 @@ def generate_launch_description() -> None:
         executable="particle_filter",
         name="particle_filter",
         parameters=[localize_config],
+        remappings=[("/tf", "/null")],  # map TF data to unused topic
     )
     return LaunchDescription([localize_config_launch_arg, pf_node])

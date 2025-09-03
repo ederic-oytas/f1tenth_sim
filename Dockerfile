@@ -42,6 +42,12 @@ RUN apt-get update --fix-missing && \
 RUN apt-get -y dist-upgrade
 RUN pip3 install transforms3d
 
+# append commands to .bashrc
+RUN echo >> /root/.bashrc
+RUN --mount=type=bind,src=bashrc_append.sh,dst=/root/bashrc_append.sh \
+    tr -d '\r' < /root/bashrc_append.sh >> /root/.bashrc
+# credit for removing carriage returns: https://stackoverflow.com/a/802439
+
 # f1tenth gym
 RUN git clone https://github.com/f1tenth/f1tenth_gym
 RUN cd f1tenth_gym && \

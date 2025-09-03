@@ -56,9 +56,9 @@ RUN apt install -y ros-foxy-slam-toolbox \
                    ros-foxy-turtlebot3-gazebo
 
 # lab 8 dependencies
-COPY lab8_ws/src /lab8_ws/src
+COPY lab8_ws/src /root/lab8_ws/src
 RUN source /opt/ros/foxy/setup.bash && \
-    rosdep install -i --from-paths --rosdistro foxy -y -r /lab8_ws/src
+    rosdep install -i --from-paths --rosdistro foxy -y -r /root/lab8_ws/src
 
 # lab 6 fix (originally the interactive_marker_tutorials package was developed
 #            for ROS1; thankfully the fix is simple)
@@ -77,12 +77,12 @@ RUN cd f1tenth_gym && \
     pip3 install -e .
 
 # sim_ws
-RUN mkdir -p sim_ws/src/
-COPY sim_ws/src/ /sim_ws/src/
+RUN mkdir -p /root/sim_ws/src/
+COPY sim_ws/src/ /root/sim_ws/src/
 RUN source /opt/ros/foxy/setup.bash && \
-    cd sim_ws/ && \
+    cd /root/sim_ws/ && \
     apt-get update --fix-missing && \
-    rosdep install -i -r --from-paths --rosdistro foxy -y /sim_ws/src && \
+    rosdep install -i -r --from-paths --rosdistro foxy -y src && \
     colcon build
 
 # install range_libc
@@ -91,5 +91,5 @@ RUN pip3 install Cython && \
     cd /range_libc/pywrapper && \
     WITH_CUDA=OFF python3 setup.py install
 
-WORKDIR '/'
+WORKDIR '/root'
 ENTRYPOINT ["/bin/bash"]

@@ -33,6 +33,14 @@ services:
     build: ./
     volumes: 
       - ./sim_ws/src:/sim_ws/src
+      - ./lab1_ws/src:/lab1_ws/src
+      - ./lab2_ws/src:/lab2_ws/src
+      - ./lab3_ws/src:/lab3_ws/src
+      - ./lab4_ws/src:/lab4_ws/src
+      - ./lab5_ws/src:/lab5_ws/src
+      - ./lab6_ws/src:/lab6_ws/src
+      - ./lab7_ws/src:/lab7_ws/src
+      - ./lab8_ws/src:/lab8_ws/src
     environment:
       - DISPLAY=novnc:0.0
     networks:

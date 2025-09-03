@@ -1,3 +1,27 @@
 [submodule "sim_ws/src/f1tenth_gym_ros"]
 	path = sim_ws/src/f1tenth_gym_ros
 	url = https://github.com/f1tenth/f1tenth_gym_ros.git
+[submodule "lab1_ws/src/lab1"]
+	path = lab1_ws/src/lab1
+	url = https://github.com/unlv-f1/lab1.git
+[submodule "lab2_ws/src/lab2"]
+	path = lab2_ws/src/lab2
+	url = https://github.com/unlv-f1/lab2.git
+[submodule "lab3_ws/src/lab3"]
+	path = lab3_ws/src/lab3
+	url = https://github.com/unlv-f1/lab3.git
+[submodule "lab4_ws/src/lab4"]
+	path = lab4_ws/src/lab4
+	url = https://github.com/unlv-f1/lab4.git
+[submodule "lab5_ws/src/lab5"]
+	path = lab5_ws/src/lab5
+	url = https://github.com/unlv-f1/lab5.git
+[submodule "lab6_ws/src/lab6"]
+	path = lab6_ws/src/lab6
+	url = https://github.com/unlv-f1/lab6.git
+[submodule "lab7_ws/src/lab7"]
+	path = lab7_ws/src/lab7
+	url = https://github.com/unlv-f1/lab7.git
+[submodule "lab8_ws/src/lab8"]
+	path = lab8_ws/src/lab8
+	url = https://github.com/unlv-f1/lab8.git

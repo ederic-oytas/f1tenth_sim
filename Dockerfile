@@ -60,6 +60,11 @@ COPY lab8_ws/src /lab8_ws/src
 RUN source /opt/ros/foxy/setup.bash && \
     rosdep install -i --from-paths --rosdistro foxy -y -r /lab8_ws/src
 
+# lab 6 fix (originally the interactive_marker_tutorials package was developed
+#            for ROS1; thankfully the fix is simple)
+RUN cp /opt/ros/foxy/include/tf2_geometry_msgs/tf2_geometry_msgs.h \
+       /opt/ros/foxy/include/tf2_geometry_msgs/tf2_geometry_msgs.hpp
+
 # append commands to .bashrc
 RUN echo >> /root/.bashrc
 RUN --mount=type=bind,src=bashrc_append.sh,dst=/root/bashrc_append.sh \

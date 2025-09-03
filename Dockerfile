@@ -42,6 +42,24 @@ RUN apt-get update --fix-missing && \
 RUN apt-get -y dist-upgrade
 RUN pip3 install transforms3d
 
+# note: for faster builds, if you aren't using these packages/labs yet, you can
+#   comment these out
+
+# lab 2 dependencies
+RUN apt-get install -y ros-foxy-tf2-tools \
+                       ros-foxy-tf-transformations
+
+# lab 7 dependencies
+RUN apt install -y ros-foxy-slam-toolbox \
+                   ros-foxy-navigation2 \
+                   ros-foxy-nav2-bringup \
+                   ros-foxy-turtlebot3-gazebo
+
+# lab 8 dependencies
+COPY lab8_ws/src /lab8_ws/src
+RUN source /opt/ros/foxy/setup.bash && \
+    rosdep install -i --from-paths --rosdistro foxy -y -r /lab8_ws/src
+
 # append commands to .bashrc
 RUN echo >> /root/.bashrc
 RUN --mount=type=bind,src=bashrc_append.sh,dst=/root/bashrc_append.sh \

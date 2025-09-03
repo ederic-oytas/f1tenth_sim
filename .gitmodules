@@ -25,3 +25,9 @@
 [submodule "lab8_ws/src/lab8"]
 	path = lab8_ws/src/lab8
 	url = https://github.com/unlv-f1/lab8.git
+[submodule "range_libc"]
+	path = range_libc
+	url = https://github.com/f1tenth/range_libc.git
+[submodule "sim_ws/src/particle_filter"]
+	path = sim_ws/src/particle_filter
+	url = https://github.com/ederic-oytas/particle_filter

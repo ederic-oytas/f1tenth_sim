@@ -40,7 +40,7 @@ RUN apt-get update --fix-missing && \
                        tmux \
                        ros-foxy-rviz2
 RUN apt-get -y dist-upgrade
-RUN pip3 install transforms3d
+RUN pip3 install transforms3d numpy
 
 # note: for faster builds, if you aren't using these packages/labs yet, you can
 #   comment these out
@@ -71,19 +71,25 @@ RUN --mount=type=bind,src=bashrc_append.sh,dst=/root/bashrc_append.sh \
     tr -d '\r' < /root/bashrc_append.sh >> /root/.bashrc
 # credit for removing carriage returns: https://stackoverflow.com/a/802439
 
-# f1tenth gym
+# f1tenth gym dependencies
 RUN git clone https://github.com/f1tenth/f1tenth_gym
 RUN cd f1tenth_gym && \
     pip3 install -e .
 
-# ros2 gym bridge
+# sim_ws
 RUN mkdir -p sim_ws/src/
 COPY sim_ws/src/ /sim_ws/src/
 RUN source /opt/ros/foxy/setup.bash && \
     cd sim_ws/ && \
     apt-get update --fix-missing && \
-    rosdep install -i --from-path src --rosdistro foxy -y && \
+    rosdep install -i -r --from-paths --rosdistro foxy -y /sim_ws/src && \
     colcon build
+
+# install range_libc
+COPY range_libc /range_libc
+RUN pip3 install Cython && \
+    cd /range_libc/pywrapper && \
+    WITH_CUDA=OFF python3 setup.py install
 
 WORKDIR '/'
 ENTRYPOINT ["/bin/bash"]

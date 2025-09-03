@@ -30,4 +30,4 @@
 	url = https://github.com/f1tenth/range_libc.git
 [submodule "sim_ws/src/particle_filter"]
 	path = sim_ws/src/particle_filter
-	url = https://github.com/ederic-oytas/particle_filter
+	url = https://github.com/f1tenth/particle_filter.git

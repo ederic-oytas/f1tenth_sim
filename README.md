@@ -116,6 +116,19 @@ On the desktop, it should show the gym running:
 
 > Note: It will take several seconds before everything is fully running.
 
+If you want, you can run the original launch file from the `f1tenth_gym_ros` node. First, you need to change the `map_path` parameter in */root/sim_ws/src/f1tenth_gym_ros/config/sim.yaml*:
+
+```yaml
+# change to /root/sim_ws/src/f1tenth_gym_ros/maps/levine
+map_path: '/sim_ws/src/f1tenth_gym_ros/maps/levine'
+```
+
+After, rebuild and re-source, then you can use the following to run the gym:
+
+```bash
+ros2 launch f1tenth_gym_ros gym_bridge_launch.py
+```
+
 ## Setting Pose in the Gym
 
 To set the car's pose (position+angle) in the gym, use "2D Pose Estimate" and drag an arrow anywhere on the map to set the car's new pose. 

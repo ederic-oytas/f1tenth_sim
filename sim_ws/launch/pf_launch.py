@@ -4,12 +4,13 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
-def generate_launch_description() -> None:
+def generate_launch_description() -> LaunchDescription:
     localize_config = LaunchConfiguration("localize_config")
     localize_config_launch_arg = DeclareLaunchArgument(
         "localize_config", default_value="config/sim_localize.yaml"
     )
-    # From: https://github.com/f1tenth/particle_filter/blob/foxy-devel/launch/localize_launch.py
+    # Code below derived from:
+    # https://github.com/f1tenth/particle_filter/blob/foxy-devel/launch/localize_launch.py
     pf_node = Node(
         package="particle_filter",
         executable="particle_filter",

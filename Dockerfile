@@ -56,9 +56,9 @@ RUN apt install -y ros-foxy-slam-toolbox \
                    ros-foxy-turtlebot3-gazebo
 
 # lab 8 dependencies
-COPY lab8_ws/src /root/lab8_ws/src
-RUN source /opt/ros/foxy/setup.bash && \
-    rosdep install -i --from-paths --rosdistro foxy -y -r /root/lab8_ws/src
+# COPY lab8_ws/src /root/lab8_ws/src
+# RUN source /opt/ros/foxy/setup.bash && \
+#     rosdep install -i --from-paths --rosdistro foxy -y -r /root/lab8_ws/src
 
 # lab 6 fix (originally the interactive_marker_tutorials package was developed
 #            for ROS1; thankfully the fix is simple)
